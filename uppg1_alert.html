@@ -1,15 +1,39 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Uppgift 1: Alert</title>
-  </head>
-  <body>
-    <button onclick="showAlert()">Click me for to be welcomed</button>
-  </body>
+<html lang="sv">
+<head>
+  <meta charset="UTF-8">
+  <title>Alert</title>
+  <style>
+    body { text-align: center; font-family: sans-serif; margin-top: 100px; }
+    #ruta {
+      display: none;
+      position: fixed; inset: 0;
+      background: rgba(0,0,0,0.8);
+      color: white;
+      justify-content: center; align-items: center;
+      flex-direction: column;
+    }
+    #ruta div {
+      background: white; color: black; padding: 20px; border-radius: 10px;
+    }
+    button { margin-top: 10px; }
+  </style>
+</head>
+<body>
+  <button onclick="ruta.style.display='flex'">Klicka här</button>
+
+  <div id="ruta">
+    <div>
+      <h2>Välkommen!</h2>
+      <p>Kul att du är här!</p>
+      <button onclick="ruta.style.display='none'">Stäng</button>
+    </div>
+  </div>
 
   <script>
-    // TODO: Välkomna användaren med en alert när de klickar på knappen
+    const ruta = document.getElementById('ruta');
   </script>
+</body>
 </html>
+
+

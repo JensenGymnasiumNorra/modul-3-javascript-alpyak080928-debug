@@ -13,25 +13,47 @@
     
 -->
 
+
 <!DOCTYPE html>
-<html lang="en">
+<html lang="sv">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="weather.css">
-    <title>Conditional Statements Example</title>
+  <meta charset="UTF-8">
+  <title>Gissa talet!</title>
+  <style>
+    body { text-align: center; font-family: sans-serif; margin-top: 50px; }
+    input, button { padding: 10px; margin: 5px; }
+  </style>
 </head>
 <body>
+  <h2>Gissa talet!</h2>
 
-    <label for="numberSlider">Select number</label>
-    <br>
-    <input type="range" id="valueSlider" min="0" max="100" value="25">
-    <br>
-    <span id="selectedNumber"></span>
-    <br>
-    <p id="hint"></p>
+  <input type="number" id="gissning" placeholder="0-100">
+  <button onclick="kolla()">Gissa</button>
+  <p id="hint"></p>
+  <p>Antal rätt: <span id="antalRätt">0</span></p>
+  <button onclick="nyttTal()">Nytt tal</button>
 
+  <script>
+    let hemligtTal = Math.floor(Math.random() * 101);
+    let antalRätt = 0;
 
-    <script src="uppg7.js"></script>
+    function kolla() {
+      const g = Number(document.getElementById('gissning').value);
+      const hintEl = document.getElementById('hint');
+      if(g < hemligtTal) hintEl.textContent = "För lågt!";
+      else if(g > hemligtTal) hintEl.textContent = "För högt!";
+      else {
+        hintEl.textContent = "Rätt gissat bror!";
+        antalRätt++;
+        document.getElementById('antalRätt').textContent = antalRätt;
+      }
+    }
+
+    function nyttTal() {
+      hemligtTal = Math.floor(Math.random() * 101);
+      document.getElementById('gissning').value = '';
+      document.getElementById('hint').textContent = '';
+    }
+  </script>
 </body>
 </html>

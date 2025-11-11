@@ -1,23 +1,30 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Uppgift 3: Change content</title>
-    <style>
-      .recipe {
-        display: none;
-      }
-    </style>
-  </head>
-  <body>
-    <button onclick="showCarbonara()">Show carbonara ingredients</button>
-    <button onclick="showPizza()">Show pizza ingredients</button>
+<html lang="sv">
+<head>
+  <meta charset="UTF-8">
+  <title>Uppgift 3: Change content</title>
+  <style>
+    body { text-align: center; font-family: sans-serif; margin-top: 50px; }
+    button { margin: 5px; padding: 10px 20px; cursor: pointer; }
+    #ingredients { margin-top: 20px; }
+  </style>
+</head>
+<body>
+  <button onclick="show('carbonara')">Visa Carbonara</button>
+  <button onclick="show('pizza')">Visa Pizza</button>
 
-    <div id="ingredients"></div>
+  <div id="ingredients"></div>
 
-    <script>
-      // TODO: Skapa funktionerna showCarbonara() och showPizza() för att visa ingredienserna för respektive recept i diven ingredients
-    </script>
-  </body>
+  <script>
+    const ingredients = {
+      carbonara: ['Spaghetti', 'Ägg', 'Pancetta', 'Parmesan', 'Svartpeppar'],
+      pizza: ['Pizzadeg', 'Tomatsås', 'Ost', 'Skinka', 'Champinjoner']
+    };
+
+    function show(dish) {
+      const list = ingredients[dish].map(i => `<li>${i}</li>`).join('');
+      document.getElementById('ingredients').innerHTML = `<h3>${dish.charAt(0).toUpperCase() + dish.slice(1)}</h3><ul>${list}</ul>`;
+    }
+  </script>
+</body>
 </html>
